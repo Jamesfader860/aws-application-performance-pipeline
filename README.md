@@ -98,14 +98,16 @@ This design was prioritized against two critical pillars of the AWS Well-Archite
 ### 1. Centralized Log Streams
 To ensure complete visibility into the health of the application, I configured the CloudWatch logs agent to stream application logs directly from the EC2 instance into a centralized repository.
 
-artifact_03_cloudwatch_log_stream.png 
+<img width="985" height="559" alt="artifact_03_gunicorn_active_logs" src="https://github.com/user-attachments/assets/b3a49a80-576f-4f73-8470-283fbb2bf182" />
+
 
 ### 2. High-Latency Incident Trigger & Alarm Breach
 To test the reliability of the monitoring framework, traffic loops were simulated against the application. By stopping the backend web server process (`pkill gunicorn`), I intentionally triggered an operational failure. 
 
 To ensure the system flagged the total loss of the application backend, the alarm’s missing data treatment was optimized to **"Treat missing data as bad (breaching)"**, instantly forcing the alarm into a critical state.
 
-_04_cloudwatch_alarm_breach.png
+<img width="1319" height="289" alt="artifact_04_cloudwatch_alarm_breach" src="https://github.com/user-attachments/assets/cdb774c7-a619-43bc-bf45-a321a0f1418a" />
+
 
 ---
 
